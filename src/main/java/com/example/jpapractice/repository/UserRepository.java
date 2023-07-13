@@ -39,6 +39,13 @@ public class UserRepository {
         return Optional.ofNullable(user);
     }
 
+    public Optional<List<User>> findAllUsers() {
+        List<User> users = em.createQuery("select u from users as u")
+                .getResultList();
+        close(em);
+        return Optional.ofNullable(users);
+    }
+
     public Optional<User> findByName(String userName){
         List<User> users = em.createQuery("select u from users as u where u.name = :userName", User.class)
                 .setParameter("userName", userName)

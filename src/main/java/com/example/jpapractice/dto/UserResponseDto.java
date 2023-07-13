@@ -1,6 +1,7 @@
 package com.example.jpapractice.dto;
 
 import com.example.jpapractice.model.Team;
+import com.example.jpapractice.model.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,5 +14,10 @@ public class UserResponseDto {
     public UserResponseDto(Long id, String name, Team team) {
         this.name = name;
         this.team = team;
+    }
+
+    public UserResponseDto(User user) {
+        this.name = user.getName();
+        this.team = user.getTeam();
     }
 }

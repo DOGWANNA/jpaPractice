@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.jpapractice.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -19,7 +21,12 @@ public class UserController {
         return userService.createUser(userRequestDto);
     }
 
-    @GetMapping("/user")
+    @GetMapping("/findall")
+    public ResponseEntity<List<UserResponseDto>> findAllUsers(){
+        return userService.findAllUsers();
+    }
+
+    @GetMapping("/find")
     public ResponseEntity<UserResponseDto> findById(@RequestParam Long userId) throws Exception {
         return ResponseEntity.ok(userService.findById(userId));
     }
