@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ITEM_ID")
     private Long id;
 
     @Column(name = "ITEM_ID")
