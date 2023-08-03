@@ -22,5 +22,5 @@ public class TeamController {
     public ResponseEntity<TeamResponseDto> findById(@RequestParam Long userId) throws Exception {
         return ResponseEntity.ok(teamService.findById(userId));
     }
-}//
+}///
 
