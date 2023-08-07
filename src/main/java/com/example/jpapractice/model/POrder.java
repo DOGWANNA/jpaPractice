@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
-public class Order {
+public class POrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ORDER_ID")
