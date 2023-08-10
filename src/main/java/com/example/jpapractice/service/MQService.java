@@ -18,7 +18,7 @@ public class MQService {
         List<String> list = new ArrayList<>();
 
         for(int i=1; i<=10; i++){
-            list.add(String.valueOf(i));
+            list.add(name + " : " + i);
         }
 
         try{
