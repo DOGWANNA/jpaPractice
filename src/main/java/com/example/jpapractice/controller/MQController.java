@@ -18,9 +18,7 @@ public class MQController {
                               @RequestParam("destination") String destination,
                               @RequestParam("name") String name
     ){
-        for(int i=1; i<=50; i++){
-            mqService.sendMessage(destination,message, i, name);
-        }
+            mqService.sendMessage(destination,message, name);
         return "succcess";
     }
 }
