@@ -29,10 +29,10 @@ public class MQService {
         }
     }
 
-    @JmsListener(destination = "queueName")
-    public void receiveMessage(List message) {
-        for(Object s : message){
-            System.out.println("Received message: " + s);
-        }
-    }
+//    @JmsListener(destination = "queueName")
+//    public void receiveMessage(List message) {
+//        for(Object s : message){
+//            System.out.println("Received message: " + s);
+//        }
+//    }
 }
