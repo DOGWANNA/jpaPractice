@@ -1,5 +1,6 @@
 package com.example.jpapractice.model;
 
+import com.example.jpapractice.Enum.DeliveryStatus;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -14,5 +15,10 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery")
     private POrder order;
 
+    private String city;
+    private String street;
+    private String zipode;
 
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status;
 }

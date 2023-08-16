@@ -3,6 +3,7 @@ package com.example.jpapractice.model;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,6 @@ public class Member {
     private String street;
     private String zipcode;
 
-    @OneToMany(mappedBy = "porder")
-    private List<POrder> orders;
+    @OneToMany(mappedBy = "member")
+    private List<POrder> orders = new ArrayList<POrder>();
 }

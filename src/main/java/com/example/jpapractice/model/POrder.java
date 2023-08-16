@@ -4,7 +4,9 @@ import com.example.jpapractice.Enum.OrderStatus;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -16,6 +18,13 @@ public class POrder {
 
     @Column(name = "MEMBER_ID")
     private Long memberId;
+
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
+
+    @OneToMany(mappedBy = "order")
+    private List<POrder> orderList = new ArrayList<POrder>();
 
     @OneToOne
     @JoinColumn(name = "DELIVERY_ID")
