@@ -17,6 +17,10 @@ public class POrder {
     @Column(name = "MEMBER_ID")
     private Long memberId;
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 

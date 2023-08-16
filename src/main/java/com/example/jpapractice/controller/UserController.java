@@ -15,19 +15,19 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-
-    @PostMapping("/signup")
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto){
-        return userService.createUser(userRequestDto);
-    }
-
-    @GetMapping("/findall")
-    public ResponseEntity<List<UserResponseDto>> findAllUsers(){
-        return userService.findAllUsers();
-    }
-
-    @GetMapping("/find")
-    public ResponseEntity<UserResponseDto> findById(@RequestParam Long userId) throws Exception {
-        return ResponseEntity.ok(userService.findById(userId));
-    }
+//
+//    @PostMapping("/signup")
+//    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto){
+//        return userService.createUser(userRequestDto);
+//    }
+//
+//    @GetMapping("/findall")
+//    public ResponseEntity<List<UserResponseDto>> findAllUsers(){
+//        return userService.findAllUsers();
+//    }
+//
+//    @GetMapping("/find")
+//    public ResponseEntity<UserResponseDto> findById(@RequestParam Long userId) throws Exception {
+//        return ResponseEntity.ok(userService.findById(userId));
+//    }
 }
