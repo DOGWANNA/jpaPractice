@@ -13,20 +13,20 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class TeamService {
     private final TeamRepository teamRepository;
-//
-//    @Transactional
-//    public ResponseEntity<TeamResponseDto> createTeam(TeamRequestDto teamRequestDto) {
-//        return teamRepository.createTeam(teamRequestDto);
-//    }
-//
-//    @Transactional(readOnly = true)
-//    public TeamResponseDto findById(Long teamId) throws Exception {
-//        Team team = teamRepository.findById(teamId)
-//                .orElseThrow(()-> new Exception("해당 팀이 존재하지 않습니다."));
-//
-//        return TeamResponseDto.builder()
-////                .id(team.getId())
-//                .name(team.getName())
-//                .build();
-//    }
+
+    @Transactional
+    public ResponseEntity<TeamResponseDto> createTeam(TeamRequestDto teamRequestDto) {
+        return teamRepository.createTeam(teamRequestDto);
+    }
+
+    @Transactional(readOnly = true)
+    public TeamResponseDto findById(Long teamId) throws Exception {
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(()-> new Exception("해당 팀이 존재하지 않습니다."));
+
+        return TeamResponseDto.builder()
+//                .id(team.getId())
+                .name(team.getName())
+                .build();
+    }
 }
