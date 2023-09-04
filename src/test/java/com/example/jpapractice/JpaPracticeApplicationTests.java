@@ -13,12 +13,12 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(controllers = UserService.class)
 public class JpaPracticeApplicationTests {
 
-    @Autowired
-    private MockMvc mvc;
-    @Test
-    @DisplayName("테스트 메서드")
-    public void contextLoads() throws Exception {
-
-    }
+//    @Autowired
+//    private MockMvc mvc;
+//    @Test
+//    @DisplayName("테스트 메서드")
+//    public void contextLoads() throws Exception {
+//
+//    }
 
 }
