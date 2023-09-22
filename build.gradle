@@ -7,10 +7,10 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
-// KMS 관련 설정
-ext {
-    set('springCloudVersion', "Hoxton.SR9")  // 요기!!!
-}
+//// KMS 관련 설정
+//ext {
+//    set('springCloudVersion', "Hoxton.SR9")  // 요기!!!
+//}
 
 java {
     sourceCompatibility = '1.8'
@@ -38,11 +38,11 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    //AWS 관련
-    implementation("org.zalando:spring-cloud-config-aws-kms:5.1.2")
-    implementation("com.amazonaws:aws-java-sdk-core:1.11.1019")
-    implementation("com.amazonaws:aws-java-sdk-kms:1.11.1019")
-    implementation("com.amazonaws:jmespath-java:1.11.1019")
+//    //AWS 관련
+//    implementation("org.zalando:spring-cloud-config-aws-kms:5.1.2")
+//    implementation("com.amazonaws:aws-java-sdk-core:1.11.1019")
+//    implementation("com.amazonaws:aws-java-sdk-kms:1.11.1019")
+//    implementation("com.amazonaws:jmespath-java:1.11.1019")
 }
 
 tasks.named('test') {
