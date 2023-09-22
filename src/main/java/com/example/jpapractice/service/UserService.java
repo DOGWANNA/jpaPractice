@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -28,8 +28,14 @@ public class UserService {
     @Transactional(readOnly = true)
     public ResponseEntity<List<UserResponseDto>> findAllUsers() {
         List<User> users = userRepository.findAll();
-        List<UserResponseDto> userResponseDtos =
-        users.stream().map(UserResponseDto::new).collect(Collectors.toList());
+        List<UserResponseDto> userResponseDtos = new ArrayList<>();
+
+        for(User user : users){
+            userResponseDtos.add(UserResponseDto.builder()
+                            .name(user.getName())
+                            .team(user.getTeam())
+                    .build());
+        }
 
         return ResponseEntity.ok(userResponseDtos);
     }
