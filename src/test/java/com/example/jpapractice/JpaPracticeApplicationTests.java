@@ -3,12 +3,10 @@ package com.example.jpapractice;
 import com.example.jpapractice.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 //@SpringBootTest
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = UserService.class)
-@EnableRedisHttpSession
 public class JpaPracticeApplicationTests {
 ////
 //    @Autowired
