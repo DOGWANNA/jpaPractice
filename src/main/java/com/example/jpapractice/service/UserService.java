@@ -4,18 +4,28 @@ import com.example.jpapractice.dto.UserRequestDto;
 import com.example.jpapractice.dto.UserResponseDto;
 import com.example.jpapractice.model.User;
 import com.example.jpapractice.repository.UserRepository;
+import com.example.jpapractice.utils.ApachePoiUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class UserService {
     private final UserRepository userRepository;
+    private final ApachePoiUtil apachePoiUtil;
+
+    private final String sessionId = "sessionId";
+    
     @Transactional
     public ResponseEntity<User> createUser(UserRequestDto userRequestDto) {
         User user = userRepository.save(User.builder()
@@ -49,5 +59,18 @@ public class UserService {
                 .name(user.getName())
                 .team(user.getTeam())
                 .build();
+    }
+
+    public String login(HttpSession session) {
+        // 키가 sessionId 인 값을 가져오고, 없으면 UUID 생성
+        UUID uuid = Optional.ofNullable(UUID.class.cast(session.getAttribute(sessionId)))
+                .orElse(UUID.randomUUID());
+        session.setAttribute(sessionId, uuid);
+        return (String) session.getAttribute(sessionId);
+    }
+
+    public void logout(HttpSession session) {
+        session.invalidate();
+        log.info((String) session.getAttribute(sessionId));
     }
 }
