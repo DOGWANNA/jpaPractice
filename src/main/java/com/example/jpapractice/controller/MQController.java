@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/mq")
 @RequiredArgsConstructor
 public class MQController {
-    ////
     private final MQService mqService;
 
     @GetMapping("/send")
