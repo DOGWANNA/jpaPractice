@@ -1,4 +1,4 @@
-package config;
+package com.example.jpapractice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,11 +15,11 @@ public class RedisConfig {
     private String redisHost;
 
     @Value("${spring.redis.port}")
-    private String redisPort;
+    private int redisPort;
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisHost, Integer.parseInt(redisPort));
+        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisHost, redisPort);
         return lettuceConnectionFactory;
     }
 
