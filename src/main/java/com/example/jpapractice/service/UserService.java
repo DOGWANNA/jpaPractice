@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -63,10 +62,17 @@ public class UserService {
 
     public String login(HttpSession session) {
         // 키가 sessionId 인 값을 가져오고, 없으면 UUID 생성
-        UUID uuid = Optional.ofNullable(UUID.class.cast(session.getAttribute(sessionId)))
-                .orElse(UUID.randomUUID());
-        session.setAttribute(sessionId, uuid);
-        return (String) session.getAttribute(sessionId);
+        Object sessionIdValue = session.getAttribute(sessionId);
+        UUID uuid;
+
+        if(sessionIdValue instanceof UUID){
+            uuid = (UUID)sessionIdValue;
+        } else {
+            uuid = UUID.randomUUID();
+            session.setAttribute(sessionId, uuid);
+        }
+
+        return uuid.toString();
     }
 
     public void logout(HttpSession session) {
