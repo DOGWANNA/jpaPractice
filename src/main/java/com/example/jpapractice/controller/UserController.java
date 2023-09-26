@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -25,15 +24,15 @@ public class UserController {
         apachePoiUtil.addPasswordToExcelFile();
     }
 
-    @PostMapping("/login")
-    public String login(HttpSession session){
-        return userService.login(session);
-    }
-
-    @PostMapping("logout")
-    public void logout(HttpSession session){
-        userService.logout(session);
-    }
+//    @PostMapping("/login")
+//    public String login(HttpSession session){
+//        return userService.login(session);
+//    }
+//
+//    @PostMapping("logout")
+//    public void logout(HttpSession session){
+//        userService.logout(session);
+//    }
 
     @PostMapping("/signup")
     public ResponseEntity<User> createUser(@RequestBody UserRequestDto userRequestDto){
