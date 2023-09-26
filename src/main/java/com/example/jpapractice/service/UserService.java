@@ -11,8 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -58,23 +60,23 @@ public class UserService {
                 .build();
     }
 
-//    public String login(HttpSession session) {
-//        // 키가 sessionId 인 값을 가져오고, 없으면 UUID 생성
-//        Object sessionIdValue = session.getAttribute(sessionId);
-//        UUID uuid;
-//
-//        if(sessionIdValue instanceof UUID){
-//            uuid = (UUID)sessionIdValue;
-//        } else {
-//            uuid = UUID.randomUUID();
-//            session.setAttribute(sessionId, uuid);
-//        }
-//
-//        return uuid.toString();
-//    }
-//
-//    public void logout(HttpSession session) {
-//        session.invalidate();
-//        log.info((String) session.getAttribute(sessionId));
-//    }
+    public String login(HttpSession session) {
+        // 키가 sessionId 인 값을 가져오고, 없으면 UUID 생성
+        Object sessionIdValue = session.getAttribute(sessionId);
+        UUID uuid;
+
+        if(sessionIdValue instanceof UUID){
+            uuid = (UUID)sessionIdValue;
+        } else {
+            uuid = UUID.randomUUID();
+            session.setAttribute(sessionId, uuid);
+        }
+
+        return uuid.toString();
+    }
+
+    public void logout(HttpSession session) {
+        session.invalidate();
+        log.info((String) session.getAttribute(sessionId));
+    }
 }
