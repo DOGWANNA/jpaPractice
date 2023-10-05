@@ -12,7 +12,7 @@ import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 @Configuration
 public class RedisConfig {
-
+//
     @Value("${spring.redis.host}")
     private String redisHost;
 
